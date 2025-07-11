@@ -62,7 +62,7 @@ const NoteState = (props) => {
             
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json", 
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMzYyZTk1MmQ5ZmQzMTJkMThkNDRlIn0sImlhdCI6MTc0MTAzMzkwMn0.ZQc21Sq_PcPt977UJ_HPg3Mexg1lUU9_P0WGYhsZLYY"
             },
             // Automatically converted to "username=example&password=password"
@@ -71,7 +71,7 @@ const NoteState = (props) => {
         });
         const json= await response.json();
         console.log(json);
-
+        //new cannot update the notes directly in the react so we use stringfy and then parse it to update the notes and use the new notes variable
         let newNotes=JSON.parse(JSON.stringify(notes))
         //logic to edit in client
         for (let index = 0; index < notes.length; index++) {
