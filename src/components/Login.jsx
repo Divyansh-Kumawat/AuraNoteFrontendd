@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
   const[credentials,setCredentials]= useState({email:"",password:""})
 const navigate = useNavigate();
   const handleSubmit=async(e)=>{
@@ -18,15 +18,20 @@ const navigate = useNavigate();
         if(json.success){
           //save the auth token and redirect
           localStorage.setItem('token',json.authtoken);
+          props.showAlert("Logged in successfully","success ")
           navigate("/");
+
         }else{
-          alert("Invalid credentials");
+          props.showAlert("Invalid  login fails","danger ")
+          
         }
   }
   const onChange=(e)=>{
     setCredentials({...credentials, [e.target.name]: e.target.value})
   }
   return (
+    <div className="mt3">
+    <h1>Login To continue to AuraNotes</h1>
     <div><form onSubmit={handleSubmit} >
       <div className="mb-3">
         <label htmlFor="email" className="form-label">Email address</label>
@@ -40,6 +45,7 @@ const navigate = useNavigate();
       
       <button type="submit" className="btn btn-primary" >Submit</button>
     </form></div>
+    </div>
   )
 }
 

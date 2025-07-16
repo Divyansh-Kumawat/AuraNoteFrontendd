@@ -8,10 +8,10 @@ const NoteState = (props) => {
     const getNotes = async () => {
         //API call
         const response = await fetch(`${host}/api/notes/fetchallnotes`, {
-            method: "GET",
+            method: "GET", 
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMzYyZTk1MmQ5ZmQzMTJkMThkNDRlIn0sImlhdCI6MTc0MTAzMzkwMn0.ZQc21Sq_PcPt977UJ_HPg3Mexg1lUU9_P0WGYhsZLYY"
+                "auth-token": localStorage.getItem('token')
             }
         });
         const json = await response.json()
@@ -26,7 +26,7 @@ const NoteState = (props) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMzYyZTk1MmQ5ZmQzMTJkMThkNDRlIn0sImlhdCI6MTc0MTAzMzkwMn0.ZQc21Sq_PcPt977UJ_HPg3Mexg1lUU9_P0WGYhsZLYY"
+                "auth-token": localStorage.getItem('token')
             },
             // Automatically converted to "username=example&password=password"
             body: JSON.stringify({ title, description, tag })
@@ -43,7 +43,7 @@ const NoteState = (props) => {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMzYyZTk1MmQ5ZmQzMTJkMThkNDRlIn0sImlhdCI6MTc0MTAzMzkwMn0.ZQc21Sq_PcPt977UJ_HPg3Mexg1lUU9_P0WGYhsZLYY"
+                "auth-token": localStorage.getItem('token')
             },
 
         });
@@ -63,7 +63,7 @@ const NoteState = (props) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json", 
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjdjMzYyZTk1MmQ5ZmQzMTJkMThkNDRlIn0sImlhdCI6MTc0MTAzMzkwMn0.ZQc21Sq_PcPt977UJ_HPg3Mexg1lUU9_P0WGYhsZLYY"
+                "auth-token": localStorage.getItem('token')
             },
             // Automatically converted to "username=example&password=password"
             body: JSON.stringify({ title, description, tag })
