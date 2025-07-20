@@ -16,7 +16,8 @@ const NoteState = (props) => {
         });
         const json = await response.json()
         console.log(json)
-        setNotes(json)
+        // Ensure notes is always an array
+        setNotes(Array.isArray(json) ? json : [])
     }
     //add a note
     const addNote = async (title, description, tag) => {
@@ -47,7 +48,7 @@ const NoteState = (props) => {
             },
 
         });
-        const json = response.json();
+        const json = await response.json(); // <-- add await here
         console.log(json)
         console.log("deleting the node with ID" + id)
         const newNotes = notes.filter((note) => { return note._id !== id })
