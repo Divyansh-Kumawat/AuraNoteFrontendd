@@ -36,3 +36,194 @@
     transform: rotate(360deg);
   }
 }
+
+/* Global background and text */
+body, .App {
+  background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+  color: #e3f6fd;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background: #0a2233 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #e3f6fd !important;
+}
+.navbar .nav-link.active {
+  color: #38b6ff !important;
+  font-weight: bold;
+}
+.navbar .btn {
+  font-weight: 500;
+}
+
+/* Card and modal */
+.card,
+.modal-content {
+  background: rgba(44, 83, 100, 0.98);
+  color: #e3f6fd;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(44, 83, 100, 0.37);
+  border: none;
+}
+.card-title {
+  color: #38b6ff;
+  font-weight: 600;
+}
+.card-title.text-truncate {
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.card-text {
+  color: #b2ebf2;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  color: #e3f6fd;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* Forms */
+.form-label {
+  color: #38b6ff;
+  font-weight: 500;
+}
+.form-control,
+.form-control:focus,
+input.form-control,
+textarea.form-control {
+  color: #fff !important;
+  background: rgba(255,255,255,0.10);
+}
+input.form-control::placeholder,
+textarea.form-control::placeholder {
+  color: #e3f6fd !important;
+  opacity: 0.7;
+}
+.form-control {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid #38b6ff;
+  color: #e3f6fd;
+  border-radius: 8px;
+  transition: background 0.2s, border 0.2s;
+}
+.form-control:focus {
+  background: rgba(255,255,255,0.20);
+  border-color: #38b6ff;
+  color: #0a2233;
+  box-shadow: 0 0 0 2px #38b6ff44;
+}
+textarea.form-control {
+  color: #fff !important;
+  background: rgba(255,255,255,0.10);
+}
+textarea.form-control:focus {
+  color: #fff !important;
+  background: rgba(255,255,255,0.20);
+}
+
+/* Buttons */
+.btn-primary, .btn-success, .btn-danger {
+  background: linear-gradient(90deg, #38b6ff 0%, #e3f6fd 100%);
+  border: none;
+  color: #0a2233 !important;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover {
+  background: linear-gradient(90deg, #e3f6fd 0%, #38b6ff 100%);
+  color: #0a2233 !important;
+}
+
+.btn-close {
+  filter: invert(1) brightness(2);
+  opacity: 1;
+  width: 2rem;
+  height: 2rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Modal header */
+.modal-header {
+  background: #0f2027;
+  border-bottom: 1px solid #38b6ff;
+}
+.modal-title {
+  color: #38b6ff;
+}
+
+/* Alerts */
+.alert {
+  background: #18181b !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.alert-success strong {
+  color: #38d46a !important;
+}
+.alert-danger strong,
+.alert-error strong {
+  color: #ff4c4c !important;
+}
+.alert-warning strong {
+  color: #ffd600 !important;
+}
+.alert-info strong {
+  color: #38b6ff !important;
+}
+
+/* AddNote and forms container */
+.container {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(44, 83, 100, 0.37);
+  padding: 1rem 8.5rem;
+}
+
+/* Center headings */
+.text-center {
+  text-align: center !important;
+}
+
+/* Custom scrollbar for dark theme */
+body::-webkit-scrollbar {
+  width: 8px;
+  background: #0f2027;
+}
+body::-webkit-scrollbar-thumb {
+  background: #38b6ff;
+  border-radius: 8px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+.modal.fade.show {
+  z-index: 2000;
+}
+.modal-dialog-centered {
+  min-width: 320px;
+}

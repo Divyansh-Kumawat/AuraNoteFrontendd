@@ -81,8 +81,7 @@ export const Notes = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="row my-3" style={{ gap: "24px", display: "flex", flexWrap: "wrap" }}>
-                <h2 className="text-center w-100">Your Notes</h2>
+            <div className="row my-3"><h2>Your Notes</h2>
                 {notes.length===0 && 'No notes to Display'}
                 {notes.map((note) => {
                     return <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />

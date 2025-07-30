@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
+  
   const [credentials, setCredentials] = useState({name:"", email: "", password: "", cpassword: "" })
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -31,7 +32,8 @@ const Signup = (props) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
   return (
-    <div className="container">
+    <div className="container mt-3">
+      <h1>Create an account to use AuraNotes</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="text" className="form-label">Username</label>
