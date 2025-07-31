@@ -18,14 +18,17 @@ export const Noteitem = (props) => {
 
     return (
         <>
-            <div className="col-md-3">
+            <div className="col-md-3" style={{ padding: "12px" }}>
                 <div
                     className="card my-3"
                     style={{
                         cursor: "pointer",
                         minWidth: "280px",
                         maxWidth: "100%",
-                        width: "320px"
+                        width: "320px",
+                        border: "2px solid #38b6ff",
+                        borderRadius: "16px",
+                        boxShadow: "0 2px 8px rgba(44, 83, 100, 0.25)"
                     }}
                     onClick={handleReadMode}
                 >

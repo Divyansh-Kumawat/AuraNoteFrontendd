@@ -1,19 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Link,
     useLocation
 } from "react-router-dom";
-
 import { useNavigate } from 'react-router-dom'; 
+
 export const Navbar = () => {
     let Navigate = useNavigate();
+    let location = useLocation();
+    const [username, setUsername] = useState("");
+
+    useEffect(() => {
+        // Fetch username if token exists
+        const token = localStorage.getItem("token");
+        if (token) {
+            fetch("http://localhost:5000/api/auth/getuser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": token
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.name) setUsername(data.name);
+            });
+        } else {
+            setUsername("");
+        }
+    }, [location]);
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         Navigate("/login");
     }
-    let location = useLocation();
-    useEffect(() => {
-    }, [location]);
+
     return (
         <nav
             className="navbar navbar-expand-lg sticky-top"
@@ -33,6 +54,13 @@ export const Navbar = () => {
                     }}
                   />
                 </Link>
+                <div className="flex-grow-1 d-flex justify-content-center align-items-center">
+                    {username && (
+                        <span className="text-light fw-bold" style={{ fontSize: "1.2rem" }}>
+                            Hi, {username}
+                        </span>
+                    )}
+                </div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -40,6 +68,9 @@ export const Navbar = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link className={`nav-link ${location.pathname === "/" ? "active" : ""} text-light`} aria-current="page" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="btn btn-primary mx-1" to="/collab" role="button"><i className="fa-solid fa-people-group"></i> Collab</Link>
                         </li>
                         <li className="nav-item">
                             <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""} text-light`} to="/about">About</Link>
@@ -52,7 +83,6 @@ export const Navbar = () => {
                         </form>
                     ) : (
                         <div className="d-flex">
-                            <Link className="btn btn-primary mx-1" to="/" role="button"><i class="fa-solid fa-people-group"></i>Collab</Link>
                             <button onClick={handleLogout} className="btn btn-success mx-1">Logout</button>
                         </div>
                     )}

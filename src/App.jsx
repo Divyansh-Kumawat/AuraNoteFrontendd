@@ -14,6 +14,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import { useState } from 'react';
 import Footer from './components/Footer';
+import Collab from './components/Collab';
 
 function App() {
   const [alert,setAlert]= useState(null);
@@ -37,6 +38,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login showAlert={showAlert}/>} />
             <Route path="/signup" element={<Signup showAlert={showAlert}/>} />
+            <Route path="/collab" element={<Collab showAlert={showAlert}/>} />
           </Routes>
         </div>
         <Footer />
